@@ -6,3 +6,9 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# We don't need this--all GUI code is supposed to be hand written
+/uiDesigner.xml
+# Ignore git path setups
+# IntelliJ with automatically generate correct settings on loading a new project
+# and existing projects can be configured per each person's liking
+/vcs.xml
