@@ -1,10 +1,7 @@
-
-
 package CALab;
 
 import java.awt.*;
 import java.util.*;
-import java.io.*;
 import mvc.*;
 
 public abstract class Grid extends Model {
@@ -70,7 +67,7 @@ public abstract class Grid extends Model {
 
     public void updateLoop(int cycles) {
         observe();
-        for(int cycle = 0; cycle < cycles; cycle++) {
+        for (int cycle = 0; cycle < cycles; cycle++) {
             interact();
             update();
             observe();

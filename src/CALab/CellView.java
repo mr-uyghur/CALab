@@ -1,17 +1,18 @@
 package CALab;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 import mvc.*;
-
 
 public class CellView extends JButton implements ActionListener, Subscriber {
     private Cell myCell;
 
     public CellView(Cell c) {
         myCell = c;
-        if (c != null) { c.subscribe(this); }
+        if (c != null) {
+            c.subscribe(this);
+        }
         this.addActionListener(this);
     }
 
