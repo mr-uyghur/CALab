@@ -9,7 +9,7 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
     protected AppFactory factory;
     protected Model model;
 
-    protected ControlPanel controlPanel;
+    protected JPanel controlPanel;
     protected View viewPanel;
 
     private HashMap<String, Command> commands = new HashMap<>();
@@ -19,7 +19,8 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
         this.model = factory.makeModel();
         this.model.subscribe(this);
 
-        controlPanel = new ControlPanel();
+        controlPanel = new JPanel();
+        controlPanel.setBackground(Color.PINK);
         controlPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         viewPanel = factory.makeView(model);
