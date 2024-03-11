@@ -9,4 +9,9 @@ public class Model extends Publisher implements Serializable {
     public void changed() {
         unsavedChanges = true;
     }
+
+    public boolean getUnsavedChanges() { return unsavedChanges; }
+    public void setUnsavedChanges(boolean unsavedChanges) { this.unsavedChanges = unsavedChanges; }
+    public String getFileName() { return fileName; }
+    public void setFileName(String fileName) { this.fileName = fileName; }
 }
