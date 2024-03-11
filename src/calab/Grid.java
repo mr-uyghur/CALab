@@ -45,13 +45,14 @@ public abstract class Grid extends Model {
     public void repopulate(boolean randomly) {
         for (int y = 0; y < dim; ++y) {
             for (int x = 0; x < dim; ++x) {
-                cells[y][x].reset(randomly);
+                var cell = cells[y][x];
+                var oldState = cell.getStatus();
+                cell.reset(randomly);
+                var newState = cell.getStatus();
+                notifySubscribers("repopulate", oldState, newState);
             }
         }
-        // FIXME(rtk0c): what states to pass here?
-        notifySubscribers("repopulate", null, null);
     }
-
 
     public Set<Cell> getNeighbors(Cell asker, int radius) {
         /*
