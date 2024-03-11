@@ -2,18 +2,22 @@ package mvc;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 import javax.swing.*;
 
-public class AppPanel extends JPanel implements ActionListener {
+public class AppPanel extends JPanel implements Subscriber, ActionListener {
     protected AppFactory factory;
     protected Model model;
 
     protected ControlPanel controlPanel;
     protected View viewPanel;
 
+    private HashMap<String, Command> commands = new HashMap<>();
+
     public AppPanel(AppFactory factory) {
         this.factory = factory;
-        this.setModel(factory.makeModel());
+        this.model = factory.makeModel();
+        this.model.subscribe(this);
 
         controlPanel = new ControlPanel();
         controlPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -29,8 +33,11 @@ public class AppPanel extends JPanel implements ActionListener {
         return model;
     }
 
-    public void setModel(Model model) {
-        this.model = model;
+    public void setModel(Model newModel) {
+        model.unsubscribe(this);
+        model = newModel;
+        model.subscribe(this);
+        viewPanel.setModel(model);
     }
 
     public void display() {
@@ -57,6 +64,7 @@ public class AppPanel extends JPanel implements ActionListener {
                 }
             });
             edit.add(item);
+            commands.put(name, editCmd);
         }
         mb.add(edit);
 
@@ -87,13 +95,27 @@ public class AppPanel extends JPanel implements ActionListener {
     }
 
     @Override
+    public void update(String msg, Object oldState, Object newState) {
+
+    }
+
+    @Override
     public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()) {
+        String name = e.getActionCommand();
+        switch (name) {
             case "New" -> setModel(factory.makeModel());
             // If no filename is associated, a save-as prompt is opened automatically
             case "Save" -> Utilities.save(model, false);
             case "Open" -> setModel(Utilities.open(model));
             case "Quit" -> System.exit(0);
+        }
+        Command cmd = commands.get(name);
+        if (cmd != null) {
+            try {
+                cmd.execute();
+            } catch (Exception ex) {
+                Utilities.error(ex);
+            }
         }
     }
 }

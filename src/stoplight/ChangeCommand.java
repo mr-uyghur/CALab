@@ -1,6 +1,5 @@
 package stoplight;
 
-import CALab.*;
 import mvc.*;
 
 public class ChangeCommand extends Command {

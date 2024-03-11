@@ -8,7 +8,7 @@ public class Model extends Publisher implements Serializable {
 
     public void changed() {
         unsavedChanges = true;
-        notifySubscribers("Changes", null, null);
+        notifySubscribers("NewUnsavedChanges", null, null);
     }
 
     public boolean getUnsavedChanges() { return unsavedChanges; }
