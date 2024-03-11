@@ -9,27 +9,26 @@ public class GridView extends View {
 
     public GridView(Grid model) {
         super(model);
-        int dim = model.getDim();
-        cellViews = new CellView[dim * dim];
-        setLayout(new GridLayout(dim, dim));
-        for (int y = 0; y < dim; ++y) {
-            for (int x = 0; x < dim; ++x) {
-                cellViews[y * dim + x] = new CellView(model.getCell(y, x));
-            }
-        }
+        updateComponentsForGrid(model);
     }
 
     @Override
     public void setModel(Model newModel) {
         var grid = (Grid) newModel;
         super.setModel(newModel);
+        // NOTE(rtk0c): this will leave dangling event subscriptions from CellView on the old model's Cells
+        //   we just assume that whenever the model is changed out, everything from it is going to be disposed of
+        updateComponentsForGrid(grid);
+    }
 
-        // TODO handle if newModel changed dimensions
-        // TODO I infer that the assignment wants the CellView to be recreated every time the model changes, hence why the template didn't come with a setCell() implementation
+    private void updateComponentsForGrid(Grid grid) {
         int dim = grid.getDim();
+        cellViews = new CellView[dim * dim];
+        removeAll();
+        setLayout(new GridLayout(dim, dim));
         for (int y = 0; y < dim; ++y) {
             for (int x = 0; x < dim; ++x) {
-                cellViews[y * dim + x].setCell(grid.getCell(y, x));
+                cellViews[y * dim + x] = new CellView(grid.getCell(y, x));
             }
         }
     }

@@ -18,18 +18,6 @@ public class CellView extends JButton implements ActionListener, Subscriber {
         this.addActionListener(this);
     }
 
-    public Cell getCell() {
-        return myCell;
-    }
-
-    public void setCell(Cell cell) {
-        if (myCell != null) {
-            myCell.unsubscribe(this);
-        }
-        this.myCell = cell;
-        cell.subscribe(this);
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         myCell.nextState();
