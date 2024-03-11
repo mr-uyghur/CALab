@@ -13,7 +13,7 @@ public class AppPanel extends JPanel implements ActionListener {
 
     public AppPanel(AppFactory factory) {
         this.factory = factory;
-        this.model = factory.makeModel();
+        this.setModel(factory.makeModel());
 
         controlPanel = new ControlPanel();
         controlPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
