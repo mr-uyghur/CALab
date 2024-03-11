@@ -2,7 +2,6 @@ package mvc;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
 import javax.swing.*;
 
 public class AppPanel extends JPanel implements Subscriber, ActionListener {
@@ -11,8 +10,6 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
 
     protected JPanel controlPanel;
     protected View viewPanel;
-
-    private HashMap<String, Command> commands = new HashMap<>();
 
     public AppPanel(AppFactory factory) {
         this.factory = factory;
@@ -55,17 +52,9 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
 
         var edit = new JMenu("Edit");
         for (String name : factory.getEditCommands()) {
-            var editCmd = factory.makeEditCommand(model, name, this);
             var item = new JMenuItem(name);
-            item.addActionListener(e -> {
-                try {
-                    editCmd.execute();
-                } catch (Exception ex) {
-                    Utilities.error(ex);
-                }
-            });
+            item.addActionListener(this);
             edit.add(item);
-            commands.put(name, editCmd);
         }
         mb.add(edit);
 
@@ -110,7 +99,7 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
             case "Open" -> setModel(Utilities.open(model));
             case "Quit" -> System.exit(0);
         }
-        Command cmd = commands.get(name);
+        Command cmd = factory.makeEditCommand(model, name, e.getSource());
         if (cmd != null) {
             try {
                 cmd.execute();
