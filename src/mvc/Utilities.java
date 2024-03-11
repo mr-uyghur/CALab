@@ -82,6 +82,9 @@ public class Utilities {
         String fName = model.getFileName();
         if (fName == null || saveAs) {
             fName = getFileName(fName, false);
+            // User canceled
+            if (fName == null)
+                return;
             model.setFileName(fName);
         }
         try {
