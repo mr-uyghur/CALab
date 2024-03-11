@@ -1,6 +1,5 @@
-package CALab;
+package calab;
 
-import java.awt.*;
 import java.util.*;
 import mvc.*;
 

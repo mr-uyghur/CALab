@@ -1,4 +1,4 @@
-package CALab;
+package calab;
 
 import java.awt.*;
 import java.io.*;
