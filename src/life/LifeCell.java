@@ -1,24 +1,14 @@
-package life;
-
-import calab.*;
-
-import java.awt.*;
-import java.util.*;
-
-import static java.awt.Color.red;
-import static java.awt.Color.green;
-import static mvc.Utilities.rng;
-
-public class LifeCell extends Cell{
+{
     private int status; // 0 is dead, 1 is alive
     private int ambience; // number of neighbors alive
     private Color color;
-    private Set<LifeCell> neighbors = new HashSet<>();
+    private Set<Cell> neighbors;
 
     public LifeCell(){
         super.row = 20;
         super.col = 20;
         super.myGrid = new LifeGrid();
+        neighbors = myGrid.getNeighbors(this,1);
         status = 0;
         color = red;
         ambience = 0;
@@ -26,7 +16,7 @@ public class LifeCell extends Cell{
     @Override
     public void observe() {
         int alive = 0;
-        for(LifeCell n: neighbors){
+        for(Cell n: neighbors){
             if(n.getStatus()==1){
                 alive++;
             }
