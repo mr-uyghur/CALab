@@ -1,4 +1,15 @@
 package life;
 
-public class LifeGrid {
+import calab.*;
+
+public class LifeGrid extends Grid {
+
+    public LifeGrid(){
+        super();
+        populate();
+    }
+    @Override
+    public Cell makeCell(boolean uniform) {
+        return new LifeCell();
+    }
 }
