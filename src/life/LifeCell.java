@@ -58,7 +58,7 @@ public class LifeCell extends Cell{
     // checks ambience to determine status
     @Override
     public void nextState() {
-        if(ambience!=3||ambience!=2){
+        if(ambience!=3&&ambience!=2){
             status = 0;
             color = red;
         }
