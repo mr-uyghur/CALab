@@ -4,7 +4,7 @@ import calab.*;
 import mvc.Model;
 
 public class LifeGridView extends GridView{
-    private CellView[] cellViews;
+    private LifeCellView[] lifeCellViews;
 
     public LifeGridView (LifeGrid grid){
         super(grid);
@@ -18,7 +18,7 @@ public class LifeGridView extends GridView{
     @Override
     public void update(String msg, Object oldState, Object newState) {
         // call update method of each CellView
-        for (CellView cv : cellViews) {
+        for (LifeCellView cv : lifeCellViews) {
             cv.update(msg, oldState, newState);
         }
     }
