@@ -10,6 +10,7 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
 
     protected JPanel controlPanel;
     protected View viewPanel;
+    protected SafeJFrame frame;
 
     public AppPanel(AppFactory factory) {
         this.factory = factory;
@@ -25,21 +26,8 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
         setLayout((new GridLayout(1, 2)));
         add(controlPanel);
         add(viewPanel);
-    }
 
-    public Model getModel() {
-        return model;
-    }
-
-    public void setModel(Model newModel) {
-        model.unsubscribe(this);
-        model = newModel;
-        model.subscribe(this);
-        viewPanel.setModel(model);
-    }
-
-    public void display() {
-        var frame = new SafeJFrame();
+        frame = new SafeJFrame();
 
         var mb = new JMenuBar();
 
@@ -75,6 +63,20 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
         frame.add(this);
         frame.setTitle(factory.getTitle());
         frame.setSize(500, 300);
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model newModel) {
+        model.unsubscribe(this);
+        model = newModel;
+        model.subscribe(this);
+        viewPanel.setModel(model);
+    }
+
+    public void display() {
         frame.setVisible(true);
     }
 
