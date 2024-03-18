@@ -9,13 +9,13 @@ import static java.awt.Color.red;
 import static java.awt.Color.green;
 import static mvc.Utilities.rng;
 
-public class LifeCell extends Cell{
+public class Agent extends Cell{
     private int state; // 0 is dead, 1 is alive
     private int ambience; // number of neighbors alive
     private Color color;
     private Set<Cell> neighbors;
 
-    public LifeCell(){
+    public Agent(){
         super.row = 20;
         super.col = 20;
         super.myGrid = new LifeGrid();
@@ -82,3 +82,4 @@ public class LifeCell extends Cell{
         }
     }
 }
+
