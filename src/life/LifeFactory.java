@@ -15,7 +15,7 @@ public class LifeFactory extends GridFactory {
     public View makeView(Model m) {
         if (!(m instanceof LifeGrid grid))
             throw new RuntimeException("Model must instantiate LifeGrid");
-        return new LifeView(grid);
+        return new GridView(grid);
     }
 
     @Override
