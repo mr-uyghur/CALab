@@ -13,13 +13,9 @@ public class Agent extends Cell{
     private int state; // 0 is dead, 1 is alive
     private int ambience; // number of neighbors alive
     private Color color;
-    private Set<Cell> neighbors;
+//    private Set<Cell> neighbors;
 
     public Agent(){
-        super.row = 20;
-        super.col = 20;
-        super.myGrid = new LifeGrid();
-        neighbors = myGrid.getNeighbors(this,1);
         state = 0;
         color = red;
         ambience = 0;
@@ -56,10 +52,10 @@ public class Agent extends Cell{
         return color;
     }
 
-    // checks ambience to determine status
+    // checks ambience to determine state
     @Override
     public void nextState() {
-        if(ambience!=3&&ambience!=2){
+        if(ambience!=3 && ambience!=2){
             state = 0;
             color = red;
         }
@@ -82,4 +78,3 @@ public class Agent extends Cell{
         }
     }
 }
-
