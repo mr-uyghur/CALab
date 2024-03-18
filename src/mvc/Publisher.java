@@ -13,9 +13,9 @@ public class Publisher {
         subscribers.remove(s);
     }
 
-    protected void notifySubscribers(String msg, Object oldState, Object newState) {
+    protected void notifySubscribers() {
         for (Subscriber subscriber : subscribers) {
-            subscriber.update(msg, oldState, newState);
+            subscriber.update();
         }
     }
 }

@@ -34,10 +34,10 @@ public class GridView extends View {
     }
 
     @Override
-    public void update(String msg, Object oldState, Object newState) {
+    public void update() {
         // call update method of each CellView
         for (CellView cv : cellViews) {
-            cv.update(msg, oldState, newState);
+            cv.update();
         }
     }
 }

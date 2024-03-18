@@ -41,6 +41,7 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
         var edit = new JMenu("Edit");
         for (String name : factory.getEditCommands()) {
             var item = new JMenuItem(name);
+            item.setActionCommand(name); // technically not necessary, left here for clarity: we DO want the command name to be used as the key
             item.addActionListener(this);
             edit.add(item);
         }
@@ -87,8 +88,8 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
     }
 
     @Override
-    public void update(String msg, Object oldState, Object newState) {
-
+    public void update() {
+        // No-op
     }
 
     @Override
