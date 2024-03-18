@@ -33,6 +33,9 @@ public class GridView extends View {
                 add(cv);
             }
         }
+        // https://stackoverflow.com/questions/25163805/jpanel-doesnt-update-when-adding-component-in-another-class
+        revalidate();
+        repaint();
     }
 
     @Override
