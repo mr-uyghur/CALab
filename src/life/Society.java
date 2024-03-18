@@ -2,14 +2,15 @@ package life;
 
 import calab.*;
 
-public class LifeGrid extends Grid {
+public class Society extends Grid {
 
-    public LifeGrid(){
+    public Society(){
         super();
         populate();
     }
     @Override
     public Cell makeCell(boolean uniform) {
-        return new LifeCell();
+        return new Agent();
     }
 }
+
