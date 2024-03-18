@@ -38,20 +38,4 @@ public class LifeFactory extends GridFactory {
     public String getAbout() {
         return "Game of Life v.1.0. Copyright 2024 by mvc group 2 (Tianyi, Sandy, Ali)";
     }
-
-    @Override
-    public String[] getEditCommands() {
-        return new String[]{"Run1", "Run50", "Populate", "Clear"};
-    }
-
-    @Override
-    public Command makeEditCommand(Model model, String name, Object source) {
-        return switch (name) {
-            case "Clear" -> new ClearCommand(model);
-            case "Populate" -> new PopulateCommand(model);
-            case "Run1" -> new RunCommand(model, 1);
-            case "Run50" -> new RunCommand(model, 50);
-            default -> throw new IllegalArgumentException("Unexpected value: " + name);
-        };
-    }
 }
