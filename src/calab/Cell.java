@@ -59,7 +59,6 @@ public abstract class Cell extends Publisher implements Serializable {
     public abstract void update();
 
     public abstract int getStatus();
-    public abstract int getState();
 
     // NOTE(rtk0c):
     //   The UML diagram marks this as a concrete method, which does not make any sense since there might be an arbitrary number of distinct states
