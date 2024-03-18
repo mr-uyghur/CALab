@@ -25,5 +25,7 @@ public class GridPanel extends AppPanel {
         controlPanel.add(run50);
         controlPanel.add(populate);
         controlPanel.add(clear);
+
+        controlPanel.setBackground(Color.LIGHT_GRAY);
     }
 }
