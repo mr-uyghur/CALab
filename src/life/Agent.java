@@ -2,6 +2,7 @@ package life;
 
 import calab.*;
 import java.awt.*;
+import java.util.*;
 
 import static java.awt.Color.*;
 import static mvc.Utilities.*;
@@ -35,13 +36,27 @@ public class Agent extends Cell {
         // no op function
     }
 
+    private static Set<Integer> rebirthConditions = new HashSet<>();
+    private static Set<Integer> deathConditions = new HashSet<>();
+
+    static {
+        rebirthConditions.add(3);
+        deathConditions.add(0);
+        deathConditions.add(1);
+        deathConditions.add(4);
+        deathConditions.add(5);
+        deathConditions.add(6);
+        deathConditions.add(7);
+        deathConditions.add(8);
+    }
+
     // checks ambience to determine status
     @Override
     public void update() {
-        if (ambience != 3 && ambience != 2) {
-            state = 0;
-        } else if (ambience == 3) {
+        if (rebirthConditions.contains(ambience)) {
             state = 1;
+        } else if (deathConditions.contains(ambience)) {
+            state = 0;
         }
         notifySubscribers();
     }
