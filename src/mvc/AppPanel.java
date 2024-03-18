@@ -64,13 +64,18 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String name = e.getActionCommand();
+        boolean cmdResolved = true;
         switch (name) {
             case "New" -> setModel(factory.makeModel());
             // If no filename is associated, a save-as prompt is opened automatically
             case "Save" -> Utilities.save(model, false);
             case "Open" -> setModel(Utilities.open(model));
             case "Quit" -> System.exit(0);
+            default -> cmdResolved = false;
         }
+        if (cmdResolved)
+            return;
+
         Command cmd = factory.makeEditCommand(model, name, e.getSource());
         if (cmd != null) {
             try {

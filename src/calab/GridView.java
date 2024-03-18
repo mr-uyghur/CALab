@@ -28,16 +28,14 @@ public class GridView extends View {
         setLayout(new GridLayout(dim, dim));
         for (int y = 0; y < dim; ++y) {
             for (int x = 0; x < dim; ++x) {
-                cellViews[y * dim + x] = new CellView(grid.getCell(y, x));
+                var cv = new CellView(grid.getCell(y, x));
+                cellViews[y * dim + x] = cv;
+                add(cv);
             }
         }
     }
 
     @Override
     public void update() {
-        // call update method of each CellView
-        for (CellView cv : cellViews) {
-            cv.update();
-        }
     }
 }

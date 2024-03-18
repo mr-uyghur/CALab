@@ -9,9 +9,12 @@ public abstract class Cell extends Publisher implements Serializable {
     protected int row = 0, col = 0;
     // FIXME(rtk0c): the UML diagram given asks for Cell[8], but the starter code given uses a set????
     protected Set<Cell> neighbors = new HashSet<>();
-    protected Grid myGrid = null;
+    protected Grid myGrid;
     protected Cell partner = null;
 
+    public Cell(Grid grid) {
+        this.myGrid = grid;
+    }
 
     // choose a random neighbor as a partner
     public void choosePartner() {
@@ -56,6 +59,7 @@ public abstract class Cell extends Publisher implements Serializable {
     public abstract void update();
 
     public abstract int getStatus();
+    public abstract int getState();
 
     // NOTE(rtk0c):
     //   The UML diagram marks this as a concrete method, which does not make any sense since there might be an arbitrary number of distinct states

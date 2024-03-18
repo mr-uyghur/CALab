@@ -18,6 +18,8 @@ public class View extends JPanel implements Subscriber {
         model.unsubscribe(this);
         model = newModel;
         newModel.subscribe(this);
+        // Pull data from newModel
+        update();
     }
 
     @Override

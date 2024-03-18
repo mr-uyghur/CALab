@@ -27,7 +27,6 @@ public class CellView extends JButton implements ActionListener, Subscriber {
         // call to update() not needed, because Cell#nextState() notifies its subscribers which includes this
     }
 
-    // called by notifySubscribers and GridView.update
     @Override
     public void update() {
         setBackground(myCell.getColor());

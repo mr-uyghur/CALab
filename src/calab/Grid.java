@@ -49,6 +49,12 @@ public abstract class Grid extends Model {
                 cell.reset(randomly);
             }
         }
+        for (int y = 0; y < dim; ++y) {
+            for (int x = 0; x < dim; ++x) {
+                var cell = cells[y][x];
+                cell.observe();
+            }
+        }
         notifySubscribers();
     }
 

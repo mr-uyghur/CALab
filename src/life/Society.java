@@ -4,15 +4,19 @@ import calab.*;
 
 public class Society extends Grid {
 
-    public Society(){
-        super();
-    }
-    
-    public Society(int dim){
+    public Society(int dim) {
         super(dim);
+        populate();
     }
+
+    public Society() {
+        super();
+        populate();
+    }
+
     @Override
     public Cell makeCell(boolean uniform) {
-        return new Agent();
+        return new Agent(this);
     }
 }
+
