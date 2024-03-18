@@ -7,7 +7,7 @@ public class LifeFactory extends GridFactory {
 
     @Override
     public Model makeModel() {
-        return new Society();
+        return new Society(20);
     }
 
     @Override
@@ -25,13 +25,19 @@ public class LifeFactory extends GridFactory {
     @Override
     public String[] getHelp() {
         return new String[]{
-                "Run1 - runs the program once/n"+
-                "Run50 - runs the program 50 times/n" +
-                "Populate - randomly populates the grid with cells/n" +
-                "Clear - clears the grid and turns all the cells red/n"
-
+                "Run1 - runs the program once\n"+
+                "Run50 - runs the program 50 times\n" +
+                "Populate - randomly populates the grid with cells\n" +
+                "Clear - clears the grid and turns all the cells red\n"
         };
     }
+
+    @Override
+    public String getAbout() {
+        return "Game of Life v.1.0. Copyright 2024 by mvc group 2 (Tianyi, Sandy, Ali)";
+    }
+}
+
 
     @Override
     public String getAbout() {
