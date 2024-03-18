@@ -46,12 +46,10 @@ public abstract class Grid extends Model {
         for (int y = 0; y < dim; ++y) {
             for (int x = 0; x < dim; ++x) {
                 var cell = cells[y][x];
-                var oldState = cell.getStatus();
                 cell.reset(randomly);
-                var newState = cell.getStatus();
-                notifySubscribers("repopulate", oldState, newState);
             }
         }
+        notifySubscribers();
     }
 
     public Set<Cell> getNeighbors(Cell asker, int radius) {

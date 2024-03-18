@@ -21,7 +21,7 @@ public class View extends JPanel implements Subscriber {
     }
 
     @Override
-    public void update(String msg, Object oldState, Object newState) {
+    public void update() {
         repaint();
     }
 }

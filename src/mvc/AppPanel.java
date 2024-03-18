@@ -57,8 +57,8 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
     }
 
     @Override
-    public void update(String msg, Object oldState, Object newState) {
-
+    public void update() {
+        // No-op
     }
 
     @Override
