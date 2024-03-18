@@ -26,11 +26,12 @@ public class LifePanel extends GridPanel {
         controlPanel.add(run50);
         controlPanel.add(populate);
         controlPanel.add(clear);
+
     }
 
     public static void main(String[] args){
         GridFactory factory = new LifeFactory();
-        GridPanel panel = new LifePanel(factory);
-        panel.display();
+        GridPanel p = new GridPanel(factory);
+        p.display();
     }
 }
