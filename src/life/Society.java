@@ -6,11 +6,13 @@ public class Society extends Grid {
 
     public Society(){
         super();
-        populate();
+    }
+    
+    public Society(int dim){
+        super(dim);
     }
     @Override
     public Cell makeCell(boolean uniform) {
         return new Agent();
     }
 }
-
