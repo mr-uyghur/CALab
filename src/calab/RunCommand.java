@@ -15,8 +15,6 @@ public class RunCommand extends Command {
         if (!(model instanceof Grid grid)) {
             throw new Exception("Model must instantiate Grid");
         }
-        for (int i = 0; i < times; i++) {
-            grid.update();
-        }
+        grid.updateLoop(times);
     }
 }

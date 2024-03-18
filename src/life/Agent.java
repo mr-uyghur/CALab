@@ -40,7 +40,7 @@ public class Agent extends Cell {
     public void update() {
         if (ambience != 3 && ambience != 2) {
             state = 0;
-        } else {
+        } else if (ambience == 3) {
             state = 1;
         }
         notifySubscribers();
