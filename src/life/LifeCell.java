@@ -1,5 +1,16 @@
-{
-    private int status; // 0 is dead, 1 is alive
+package life;
+
+import calab.*;
+
+import java.awt.*;
+import java.util.*;
+
+import static java.awt.Color.red;
+import static java.awt.Color.green;
+import static mvc.Utilities.rng;
+
+public class LifeCell extends Cell{
+    private int state; // 0 is dead, 1 is alive
     private int ambience; // number of neighbors alive
     private Color color;
     private Set<Cell> neighbors;
@@ -9,7 +20,7 @@
         super.col = 20;
         super.myGrid = new LifeGrid();
         neighbors = myGrid.getNeighbors(this,1);
-        status = 0;
+        state = 0;
         color = red;
         ambience = 0;
     }
@@ -37,7 +48,7 @@
 
     @Override
     public int getStatus() {
-        return status;
+        return ambience;
     }
 
     @Override
@@ -49,11 +60,11 @@
     @Override
     public void nextState() {
         if(ambience!=3&&ambience!=2){
-            status = 0;
+            state = 0;
             color = red;
         }
         else{
-            status = 1;
+            state = 1;
             color = green;
         }
     }
@@ -62,12 +73,12 @@
     public void reset(boolean randomly) {
         if(randomly){ // set status to either dead or alive
             if(rng.nextInt(2)==1)
-                status = 1;
+                state = 1;
             else
-                status = 0;
+                state = 0;
         }
         else{ // set status to dead
-            status = 0;
+            state = 0;
         }
     }
 }
