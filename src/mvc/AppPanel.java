@@ -69,6 +69,7 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
             case "New" -> setModel(factory.makeModel());
             // If no filename is associated, a save-as prompt is opened automatically
             case "Save" -> Utilities.save(model, false);
+            case "Save As" -> Utilities.save(model, true);
             case "Open" -> setModel(Utilities.open(model));
             case "Quit" -> System.exit(0);
             default -> cmdResolved = false;
@@ -92,6 +93,7 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
         var files = new JMenu("Files");
         files.add(createMenuItem("New"));
         files.add(createMenuItem("Save"));
+        files.add(createMenuItem("Save As"));
         files.add(createMenuItem("Open"));
         files.add(createMenuItem("Quit"));
         mb.add(files);
