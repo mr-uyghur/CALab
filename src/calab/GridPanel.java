@@ -25,15 +25,16 @@ public class GridPanel extends AppPanel {
         clear.addActionListener(this);
 
         // formatting the button layout
-        bp.setLayout(new GridLayout(2,2,30,100));
+        bp.setLayout(new GridLayout(2,2,75,150));
         bp.setBackground(Color.LIGHT_GRAY);
         bp.add(run1);
         bp.add(run50);
         bp.add(populate);
         bp.add(clear);
-        bp.setPreferredSize(new Dimension(230,150));
+        bp.setPreferredSize(new Dimension(275,200));
 
         controlPanel.add(bp);
         controlPanel.setBackground(Color.LIGHT_GRAY);
+        viewPanel.setBackground(Color.GRAY);
     }
 }
