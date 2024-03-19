@@ -27,6 +27,7 @@ public class Agent extends Cell {
         }
 
         ambience = alive;
+        notifySubscribers();
     }
 
     @Override
