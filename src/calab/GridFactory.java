@@ -10,7 +10,7 @@ public abstract class GridFactory implements AppFactory {
 
     @Override
     public String[] getEditCommands() {
-        return new String[]{"Clear", "Populate", "Run1", "Run50"};
+        return new String[]{"Run1", "Run50","Populate","Clear"};
     }
 
     @Override
