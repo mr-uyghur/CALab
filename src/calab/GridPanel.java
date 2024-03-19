@@ -14,10 +14,10 @@ public class GridPanel extends AppPanel {
     public GridPanel(AppFactory factory) {
         super(factory);
         JPanel bp = new JPanel();
-        run1 = new JButton("Run1");
-        run50 = new JButton("Run50");
-        populate = new JButton("Populate");
-        clear = new JButton("Clear");
+        run1 = new JButton("RUN1");
+        run50 = new JButton("RUN50");
+        populate = new JButton("POPULATE");
+        clear = new JButton("CLEAR");
 
         run1.addActionListener(this);
         run50.addActionListener(this);
@@ -25,13 +25,13 @@ public class GridPanel extends AppPanel {
         clear.addActionListener(this);
 
         // formatting the button layout
-        bp.setLayout(new GridLayout(2,2,25,100));
+        bp.setLayout(new GridLayout(2,2,30,100));
         bp.setBackground(Color.LIGHT_GRAY);
         bp.add(run1);
         bp.add(run50);
         bp.add(populate);
         bp.add(clear);
-        bp.setPreferredSize(new Dimension(215,150));
+        bp.setPreferredSize(new Dimension(230,150));
 
         controlPanel.add(bp);
         controlPanel.setBackground(Color.LIGHT_GRAY);
