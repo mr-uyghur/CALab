@@ -25,11 +25,10 @@ public class LifeFactory extends GridFactory {
     @Override
     public String[] getHelp() {
         return new String[]{
-                "Run1 - runs the program once/n"+
-                "Run50 - runs the program 50 times/n" +
-                "Populate - randomly populates the grid with cells/n" +
-                "Clear - clears the grid and turns all the cells red/n"
-
+                "Run1 - runs the program once\n"+
+                        "Run50 - runs the program 50 times\n" +
+                        "Populate - randomly populates the grid with cells\n" +
+                        "Clear - clears the grid and turns all the cells red\n"
         };
     }
 
