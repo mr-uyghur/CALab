@@ -10,16 +10,16 @@ public abstract class GridFactory implements AppFactory {
 
     @Override
     public String[] getEditCommands() {
-        return new String[]{"Run1", "Run50","Populate","Clear"};
+        return new String[]{"RUN1", "RUN50","POPULATE","CLEAR"};
     }
 
     @Override
     public Command makeEditCommand(Model model, String name, Object source) {
         return switch (name) {
-            case "Clear" -> new ClearCommand(model);
-            case "Populate" -> new PopulateCommand(model);
-            case "Run1" -> new RunCommand(model, 1);
-            case "Run50" -> new RunCommand(model, 50);
+            case "CLEAR" -> new ClearCommand(model);
+            case "POPULATE" -> new PopulateCommand(model);
+            case "RUN1" -> new RunCommand(model, 1);
+            case "RUN50" -> new RunCommand(model, 50);
             default -> throw new IllegalArgumentException("Unexpected value: " + name);
         };
     }
